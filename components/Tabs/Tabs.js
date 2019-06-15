@@ -1,9 +1,9 @@
 class TabLink {
   constructor(tabElement){
-    // assign this.tabElement to the tabElement DOM reference
+    // DONE assign this.tabElement to the tabElement DOM reference
     this.tabElement = tabElement;
     // console.log(tabElement);
-    // Get the `data-tab` value from this.tabElement and store it here
+    // DONE Get the `data-tab` value from this.tabElement and store it here
     this.tabData = this.tabElement.dataset.tab; 
     // console.log(this.tabData);
     // We need to find out if a user clicked 'all' cards or a specific category. 
@@ -23,14 +23,14 @@ class TabLink {
     //  Pass in a card object to the TabCard class. 
 
     this.cards = Array.from(this.cards).map( card =>  new TabCard(card));
-
-    // Add a click event that invokes this.selectTab
+    console.log(this.cards);
+    // DONE Add a click event that invokes this.selectTab
     this.tabElement.addEventListener('click', () => {this.selectTab()});
   }
 
   selectTab(){
 
-    // Select all elements with the .tab class on them
+    // DONE Select all elements with the .tab class on them
     const tabs = document.querySelectorAll('.tab');
     
     // Iterate through the NodeList removing the .active-tab class from each element
