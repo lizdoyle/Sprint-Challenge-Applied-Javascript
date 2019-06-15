@@ -60,7 +60,7 @@ class TabLink {
     
     // DONE Add a class of ".active-tab" to this.tabElement
    
-    tabs.classList.add('active-tab');
+    this.tabElement.classList.add('active-tab');
     // Notice we are looping through the this.cards array and invoking selectCard() from the TabCard class. 
     // Just un-comment the code and study what is happening here.
     this.cards.forEach(card => card.selectCard());
@@ -106,7 +106,7 @@ return a new instance of TabLink and pass in each tab as a parameter
 // COMPLETED START SECTION!!
 */
 
-let tabs = document.querySelectorAll('.tabs');
+let tabs = document.querySelectorAll('.tab');
 
 tabs.forEach((tab) => {
   new TabLink(tab)
