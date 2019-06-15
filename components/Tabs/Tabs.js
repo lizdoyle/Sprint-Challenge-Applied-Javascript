@@ -10,7 +10,7 @@ class TabLink {
     //  Follow the instructions below to accomplish this task:    
     
     // Check to see if this.tabData is equal to 'all'
-    if(this.tabData === document.querySelector('.tab[data-tab="all"]')) {
+   if(this.tabData === document.querySelector('.tab[data-tab="all"]')) {
       // If `all` is true, select all cards regardless of their data attribute values
        this.cards = document.querySelectorAll(`.tab[data-tab="${this.tabData[0]}"]`);
     } else {
@@ -22,8 +22,8 @@ class TabLink {
     //  Convert each this.cards element into a new instance of the TabCard class. 
     //  Pass in a card object to the TabCard class. 
 
-    this.cards = Array.from(this.cards).map( card =>  new TabCard(card));
-    console.log(this.cards);
+    this.cards = Array.from(this.tabElement).map( (card) => new TabCard(card));
+    // console.log(this.cards);
     // DONE Add a click event that invokes this.selectTab
     this.tabElement.addEventListener('click', () => {this.selectTab()});
   }
@@ -34,18 +34,16 @@ class TabLink {
     const tabs = document.querySelectorAll('.tab');
     
     // Iterate through the NodeList removing the .active-tab class from each element
-    tabs.forEach(tab => {tabs.classList.remove('active-tab')});
+    tabs.forEach(tab => {tab.classList.remove('active-tab')});
 
     // Select all of the elements with the .card class on them
     const cards = document.querySelectorAll('.card');
 
     // Iterate through the NodeList setting the display style each one to 'none'
-    cards.forEach( card => {card.classList.toggle('none')})
-// ? not sure abt line abve ?
-
+    cards.forEach( card => {card.classList.toggle('none')});
     
     // Add a class of ".active-tab" to this.tabElement
-    this.tabElement = this.tabElement.classList.add('active-tab');
+   this.tabElement.classList.add('active-tab');
   
     // Notice we are looping through the this.cards array and invoking selectCard() from the TabCard class. 
     // Just un-comment the code and study what is happening here.
@@ -60,7 +58,13 @@ class TabCard {
   }
   selectCard(){
     // Update the style of this.cardElement to display = "flex"
-    this.cardElement;
+    this.cardElement = document.querySelectorAll('.card');
+
+    for(let i=0; i < this.cardElement.length; i++) {
+      this.cardElement[i].addEventListener('click', () => { 
+        this.cardElement[i].style.display = "flex";
+      })
+    }
   }
 
 }
