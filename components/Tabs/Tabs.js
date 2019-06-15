@@ -8,12 +8,12 @@ class TabLink {
     //  Follow the instructions below to accomplish this task:    
     
     // DONE Check to see if this.tabData is equal to 'all'
-   if(this.tabData === tabElement.querySelector('.tab[data-tab="all"]')) {
+   if(this.tabData === document.querySelector('.tab[data-tab="all"]')) {
       // If `all` is true, select all cards regardless of their data attribute values
-       this.cards = tabElement.querySelectorAll('.tab[data-tab]');
+       this.cards = document.querySelectorAll('.tab[data-tab]');
     } else {
       // else if `all` is false, only select the cards with matching this.tabData values
-       this.cards = tabElement.querySelectorAll(`.tab[data-tab="${this.tabData}"]`);
+       this.cards = document.querySelectorAll(`.tab[data-tab="${this.tabData}"]`);
     }
 
      // Map over the newly converted NodeList we just created in our if statement above. 
@@ -40,12 +40,19 @@ class TabLink {
     const cards = document.querySelectorAll('.card');
     // console.log(cards);
     // Iterate through the NodeList (of Cards) setting the display style each one to 'none'
-    cards.forEach( card => {card.classList.toggle('none')});
-    // cards.forEach( card => {
-    //   card.addEventListener('click', () => {
-    //     card.style.display = "none";
-    //   });
-    // });
+    // cards.forEach( card => {card.classList.toggle('none')});
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        this.cards.style.display = "none";
+        console.log(card);
+      });
+    });
+
+    // for(let i=0; i < this.cardElement.length; i++) {
+    //   this.cardElement[i].addEventListener('click', () => { 
+    //     this.cardElement[i].style.display = "flex";
+    //   })
+    // }
     
     // DONE Add a class of ".active-tab" to this.tabElement
    this.tabElement.classList.add('active-tab');
@@ -56,13 +63,14 @@ class TabLink {
   }
 }
 
+// DONE (ALLBELOWTHISLINE)
 class TabCard {
   constructor(cardElement){
     // Assign this.cardElement to the cardElement DOM reference
     this.cardElement = cardElement;
   }
   selectCard(){
-    // Update the style of this.cardElement to display = "flex"
+    // DONE  Update the style of this.cardElement to display = "flex"
     this.cardElement = document.querySelectorAll('.card');
 
 // console.log(this.cardElement);
