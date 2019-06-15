@@ -19,28 +19,35 @@ class TabLink {
      // Map over the newly converted NodeList we just created in our if statement above. 
     //  Convert each this.cards element into a new instance of the TabCard class. 
     //  Pass in a card object to the TabCard class. 
-
-    this.cards = Array.from(this.tabElement).map( (card) => new TabCard(card));
+    // ???????
+    this.cards = Array.from(TabCard).map( (card) => new TabCard(card));
     // console.log(this.cards);
     // DONE Add a click event that invokes this.selectTab
-    this.tabElement.addEventListener('click', () => {this.selectTab()});
+    this.tabElement.addEventListener('click', () => {
+      this.selectTab()
+    });
   }
 
   selectTab(){
 
     // DONE Select all elements with the .tab class on them
     const tabs = document.querySelectorAll('.tab');
-    
-    // Iterate through the NodeList removing the .active-tab class from each element
+    // console.log(tabs);
+    // DONE Iterate through the NodeList removing the .active-tab class from each element
     tabs.forEach(tab => {tab.classList.remove('active-tab')});
 
-    // Select all of the elements with the .card class on them
+    // DONE Select all of the elements with the .card class on them
     const cards = document.querySelectorAll('.card');
-
-    // Iterate through the NodeList setting the display style each one to 'none'
+    // console.log(cards);
+    // Iterate through the NodeList (of Cards) setting the display style each one to 'none'
     cards.forEach( card => {card.classList.toggle('none')});
+    // cards.forEach( card => {
+    //   card.addEventListener('click', () => {
+    //     card.style.display = "none";
+    //   });
+    // });
     
-    // Add a class of ".active-tab" to this.tabElement
+    // DONE Add a class of ".active-tab" to this.tabElement
    this.tabElement.classList.add('active-tab');
   
     // Notice we are looping through the this.cards array and invoking selectCard() from the TabCard class. 
@@ -57,6 +64,8 @@ class TabCard {
   selectCard(){
     // Update the style of this.cardElement to display = "flex"
     this.cardElement = document.querySelectorAll('.card');
+
+// console.log(this.cardElement);
 
     for(let i=0; i < this.cardElement.length; i++) {
       this.cardElement[i].addEventListener('click', () => { 
