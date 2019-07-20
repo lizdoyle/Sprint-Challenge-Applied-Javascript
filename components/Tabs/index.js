@@ -13,7 +13,8 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
     .then(data => {
         console.log('The Topics API is working Correctly', data)
         const apiData = data.data;
-        
+        tabs.appendChild(createTab(apiData));
+
     } )
     .catch(error => {
         console.log("Error, not able to pull the Topics API Information", err);
@@ -26,12 +27,21 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
 
     const tabArray = [];
     tabArray.forEach(tabLink =>  {
-        axios://
-
-
-
+        axios.get(`https://lambda-times-backend.herokuapp.com/${topics}`)
+        .then(data => {
+            console.log('The Topics API is working Correctly', data);
+            const apiData = data.data;
+            tabs.appendChild(createTab(apiData));
+            
+        })
+        .catch(err => {
+            console.log("Error, not able to pull the Topics API Information", err);
+        })
 
     })
+
+
+    
 
 
 
@@ -44,10 +54,10 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
 
 
         // classlist
-        tabTopics.classList.add('topics')
+        tab.classList.add('topics')
 
 
         // append
-        
+        ta
 
     }
