@@ -14,19 +14,17 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
     .then(data => {
         data.data.topics.forEach(element => {
             topics.appendChild(createTab(element));
-        });
+        })
         console.log('The Topics API is working Correctly', data)
-        const apiData = data.data;
-        Tabs.appendChild(createTab(apiData));
+        // const apiData = data.data;
+        // Tabs.appendChild(createTab(apiData));
 
     } )
     .catch(error => {
         console.log("Error, not able to pull the Topics API Information", error);
     })
 
-    
 
-    const Tabs = document.querySelector('.tabs');
 
 
     // const tabArray = [apiData];

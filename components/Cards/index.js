@@ -23,32 +23,33 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
         console.log('The Cards API is working Correctly', data);
         const articles = data.data.articles;
         const Cards = document.querySelector('.cards-container');
+        console.log(articles);
 
         articles.bootstrap.forEach(card => {
             Cards.appendChild(createCard(card.headline, card.authorPhoto, card.authorName));
 
-        });
+        })
 
         articles.javascript.forEach(card => {
             Cards.appendChild(createCard(card.headline, card.authorPhoto, card.authorName));
 
-        });
+        })
 
         articles.jquery.forEach(card => {
             Cards.appendChild(createCard(card.headline, card.authorPhoto, card.authorName));
 
-        });
+        })
 
         articles.node.forEach(card => {
             Cards.appendChild(createCard(card.headline, card.authorPhoto, card.authorName));
 
-        });
+        })
 
         articles.technology.forEach(card => {
             Cards.appendChild(createCard(card.headline, card.authorPhoto, card.authorName));
 
-        });
-    } )
+        })
+    })
     .catch( error => {
         console.log("Error, not able to pull the Cards API Information", error);
     })
@@ -63,31 +64,30 @@ function createCard(articleHeadline, authorImg, nameOfAuthor) {
     const headline = document.createElement('div');
     const author = document.createElement('div');
     const imgContainer = document.createElement('div');
-    const img = document.createElement('img');
+    const authorImage = document.createElement('img');
     const byauthor = document.createElement('span');
 
     newCard.appendChild(headline);
     newCard.appendChild(author);
     author.appendChild(imgContainer);
-    imgContainer.appendChild(img);
+    imgContainer.appendChild(authorImage);
     author.appendChild(byauthor);
 
-    // headline.textContent = `{}`;
-    // author.textContent = `{}`;
-    // imgContainer.textContent = `{}`;
-    // img.src = `{}`;
-    // byauthor.textContent = `{}`;
+
 
     newCard.classList.add('card');
     headline.classList.add('headline');
     author.classList.add('author');
     imgContainer.classList.add('img-container');
-    img.src = authorImg;
+    
+    authorImage.src = authorImg;
+
+    console.log('authorImage');
 
     headline.textContent = articleHeadline;
-    author.textContent = byauthor;
+    author.textContent = nameOfAuthor;
 
 
 
-    return newCard
+    return newCard;
 }
