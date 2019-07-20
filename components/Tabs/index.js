@@ -17,7 +17,7 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
 
     } )
     .catch(error => {
-        console.log("Error, not able to pull the Topics API Information", err);
+        console.log("Error, not able to pull the Topics API Information", error);
     })
 
 
@@ -47,17 +47,23 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
 
 
 
-    function createTab() {
+    function createTab(topic) {
         // structure
-        const tab = document.createElement('div');
-
+       
+        const tabTopic = document.createElement('div');
+        const tab = document.createElement('button');
+        const tabTitle = document.createElement('span');
 
 
         // classlist
-        tab.classList.add('topics')
+        tabTopic.classList.add('topics');
+        tab.classList.add('tab');
+
+        // text content
+        tabTopic.textContent = `${topic}`;
 
 
         // append
-        ta
-
+        
+        return createTab
     }
