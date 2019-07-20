@@ -8,9 +8,13 @@
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
 
+const topics = document.querySelector('.topics');
 // Axios to pull the data
 axios.get('https://lambda-times-backend.herokuapp.com/topics')
     .then(data => {
+        data.data.topics.forEach(element => {
+            topics.appendChild(createTab(element));
+        });
         console.log('The Topics API is working Correctly', data)
         const apiData = data.data;
         Tabs.appendChild(createTab(apiData));
@@ -20,46 +24,50 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
         console.log("Error, not able to pull the Topics API Information", error);
     })
 
+    
 
     const Tabs = document.querySelector('.tabs');
 
 
-    const tabArray = [];
-    tabArray.forEach(tabLink =>  {
-        axios.get(`https://lambda-times-backend.herokuapp.com/${tabLink}`)
-        .then(data => {
-            console.log('The Topics API is working Correctly', data);
-            const apiData = data.data;
-            Tabs.appendChild(createTab(apiData));
+    // const tabArray = [apiData];
+    // tabArray.forEach( tabLink =>  {
+    //     axios.get('https://lambda-times-backend.herokuapp.com/topics')
+    //     .then(data => {
+    //         console.log('The Topics API is working Correctly', data);
+    //         const apiData = data.data;
+    //         Tabs.appendChild(createTab(apiData));
             
-        })
-        .catch(error => {
-            console.log("Error, not able to pull the Topics API Information", error);
-        })
+    //     })
+    //     .catch(error => {
+    //         console.log("Error, not able to pull the Topics API Information", error);
+    //     })
 
-    })
+    // })
 
 
-    function createTab(topic) {
+    function createTab(tabTopic) {
         // structure
-       
-        const tabTopic = document.createElement('div');
-        const tabButton = document.createElement('button');
-        const tabTitle = document.createElement('span');
+        
+        const tab = document.createElement('div');
 
 
         // classlist
-        tabTopic.classList.add('topics');
-        tabButton.classList.add('tab');
+        tab.classList.add('tabs');
 
         // text content
-        tabTopic.textContent = `${topic}`;
+        tab.textContent = tabTopic;
+
+        tab.addEventListener('click', e => {
+            e.target.classList.add('active-tab');
+
+        })
 
 
-        // append
-        tab.appendChild(tabTopic);
-        tab.appendChild(tabTitle);
-        tab.appendChild(tabButton);
+
+
         
-        return createTab
+        return tab
     }
+
+    const cards = document.querySelectorAll('.card');
+    const tabs = document.querySelectorAll('.tab');
