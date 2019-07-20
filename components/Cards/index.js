@@ -19,11 +19,61 @@
 // Create a card for each of the articles and add the card to the DOM.
 
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
-    .then(data => {
-        console.log('The Articles API is working Correctly', data)
+    .then( data => {
+        console.log('The Cards API is working Correctly', data);
         const apiData = data.data;
-        
+        Cards.appendChild(createCard(apiData))
     } )
-    .catch(error => {
-        console.log("Error, not able to pull the Articles API Information", err);
+    .catch( error => {
+        console.log("Error, not able to pull the Cards API Information", error);
     })
+
+    const Cards = document.querySelector('.cards-container');
+
+
+
+    const cardArray = [];
+    cardArray.forEach(cardLink =>  {
+        axios.get(`https://lambda-times-backend.herokuapp.com/${cardLink}`)
+        .then( data => {
+            console.log('The Cards API is working Correctly', data)
+            const apiData = data.data;
+            Cards.appendChild(createCard(apiData))
+            
+        })
+        .catch( error => {
+            console.log("Error, not able to pull the Cards API Information", error);
+        })
+
+    })
+
+    function createCard(card) {
+
+
+const newCard = document.createElement('div');
+newCard.classList.add('card');
+
+const headline = document.createElement('div');
+const author = document.createElement('div');
+const imgContainer = document.createElement('div');
+const img = document.createElement('img');
+const byauthor = document.createElement('span');
+
+headline.textContent = `{}`;
+author.textContent = `{}`;
+imgContainer.textContent = `{}`;
+img.src = `{}`;
+byauthor.textContent = `{}`;
+
+headline.classList.add('headline');
+author.classList.add('author');
+imgContainer.classList.add('img-container');
+img.classList.add('img');
+byauthor.classList.add('span');
+
+newCard.appendChild()
+
+
+
+        return createCard
+    }

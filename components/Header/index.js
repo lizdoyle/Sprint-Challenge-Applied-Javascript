@@ -9,9 +9,12 @@
 //  </div >
 // And add it to the DOM in the .headerContainer component
 
-function Header() {
+ function Header() {
 
     const header = document.createElement('div');
+    header.classList.add('header');
+
+
     const date = document.createElement('span');
     const headerTitle = document.createElement('h1');
     const temp = document.createElement('span');
@@ -22,14 +25,14 @@ function Header() {
     temp.textContent = "98°";
 
    
-    header.classList.add('header');
+   
     date.classList.add('date');
     headerTitle.classList.add('h1');
     temp.classList.add('temp');
 
     
     header.appendChild('date');
-    header.appendChild('h1');
+    header.appendChild('headerTitle');
     header.appendChild('temp');
 
 
@@ -37,9 +40,8 @@ function Header() {
 return Header
 }
 
-const header = document.querySelector('.header-container');
-header.appendChild(Header());
-// header.appendChild(Header());
+const nav = document.querySelector('.header-container');
+nav.appendChild(Header());
 
-// Header(headerItems);
-// parent.appendChild(newMenu)
+console.log(nav);
+
