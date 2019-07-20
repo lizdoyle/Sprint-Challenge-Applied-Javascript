@@ -17,3 +17,13 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+    .then(data => {
+        console.log('The Articles API is working Correctly', data)
+        const apiData = data.data;
+        
+    } )
+    .catch(error => {
+        console.log("Error, not able to pull the Articles API Information", err);
+    })
