@@ -67,25 +67,24 @@ function createCard(articleHeadline, authorImg, nameOfAuthor) {
     const authorImage = document.createElement('img');
     const byauthor = document.createElement('span');
 
-    newCard.appendChild(headline);
-    newCard.appendChild(author);
-    author.appendChild(imgContainer);
-    imgContainer.appendChild(authorImage);
-    author.appendChild(byauthor);
-
-
 
     newCard.classList.add('card');
     headline.classList.add('headline');
     author.classList.add('author');
     imgContainer.classList.add('img-container');
-    
-    authorImage.src = authorImg;
 
-    console.log('authorImage');
+    
 
     headline.textContent = articleHeadline;
     author.textContent = nameOfAuthor;
+    authorImage.src = authorImg;
+    console.log(authorImg);
+
+    newCard.appendChild(headline);
+    newCard.appendChild(author);
+    author.appendChild(imgContainer);
+    imgContainer.appendChild(authorImage);
+    author.appendChild(byauthor);
 
 
 
