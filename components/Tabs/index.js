@@ -50,7 +50,7 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
 
 
         // classlist
-        tab.classList.add('tabs');
+        tab.classList.add('tab');
 
         // text content
         tab.textContent = tabTopic;
@@ -68,4 +68,4 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
     }
 
     const cards = document.querySelectorAll('.card');
-    const tabs = document.querySelectorAll('.tab');
+    const tabs = document.querySelectorAll('.tabs');
